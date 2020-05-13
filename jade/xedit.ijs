@@ -67,9 +67,10 @@ EMPTY
 )
 
 linux_terminal=: <;._2]0 :0
+x-terminal-emulator
 gnome-terminal
+mate-terminal
 konsole
-xterm
 urxvt
 rxvt
 lxterminal
@@ -78,7 +79,7 @@ eterm
 terminator
 terminology
 st
-x-terminal-emulator
+xterm
 )
 
 NB. =========================================================

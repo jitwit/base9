@@ -95,8 +95,8 @@ else.
       end.
       echo 'install libjqt.so to ',d1
       hostcmd_jpacman_ 'rm -f /usr/bin/jqt'
-      echo 'cd ',(dquote jpath '~temp'),' && tar --no-same-owner --no-same-permissions -xzf ',(dquote p), ' && chmod 755 jqt && mv jqt /usr/bin/jqt-9.01 && chmod 644 libjqt.so && cp libjqt.so ',d1,'/libjqt.so.9.01 && ldconfig'
-      hostcmd_jpacman_ 'cd ',(dquote jpath '~temp'),' && tar --no-same-owner --no-same-permissions -xzf ',(dquote p), ' && chmod 755 jqt && mv jqt /usr/bin/jqt-9.01 && chmod 644 libjqt.so && cp libjqt.so ',d1,'/libjqt.so.9.01 && ldconfig'
+      echo 'cd ',(dquote jpath '~temp'),' && tar --no-same-owner --no-same-permissions -xzf ',(dquote p), ' && chmod 755 jqt && mv jqt /usr/bin/jqt-9.01 && cp libjqt.so ',d1,'/libjqt.so.9.01 && chmod 755 ',d1,'/libjqt.so.9.01 && ldconfig'
+      hostcmd_jpacman_ 'cd ',(dquote jpath '~temp'),' && tar --no-same-owner --no-same-permissions -xzf ',(dquote p), ' && chmod 755 jqt && mv jqt /usr/bin/jqt-9.01 && cp libjqt.so ',d1,'/libjqt.so.9.01 && chmod 755 ',d1,'/libjqt.so.9.01 && ldconfig'
       echo 'update-alternatives --install /usr/bin/jqt jqt /usr/bin/jqt-9.01 901'
       hostcmd_jpacman_ 'update-alternatives --install /usr/bin/jqt jqt /usr/bin/jqt-9.01 901'
     else.
