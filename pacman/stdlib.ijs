@@ -33,6 +33,22 @@ smoutput 'Exit and restart J using ',msg
 )
 
 NB. =========================================================
+qt_ldd_test=: 3 : 0
+if. '/usr/share/j/' -: 13{. jpath'~install' do.
+  d=. <;._2 hostcmd_jpacman_ 'ldd /usr/bin/jqt-9.01'
+  d=. d,<;._2 hostcmd_jpacman_ 'ldd ',y,'/libjqt.so.9.01'
+else.
+  d=. <;._2 hostcmd_jpacman_ 'ldd ',jpath'~bin/jqt'
+  d=. d,<;._2 hostcmd_jpacman_ 'ldd ',jpath'~bin/libjqt.so'
+end.
+b=. d#~;+./each (<'not found') E. each d
+if. #b do.
+  echo'jqt dependencies not found - jqt will not start until these are resolved'
+  echo >~.b
+end.
+)
+
+NB. =========================================================
 NB. do_getqtbin v get Qt binaries
 do_getqtbin=: 3 : 0
 
@@ -102,6 +118,7 @@ smoutput m
 NB. ---------------------------------------------------------
 NB. install Qt library:
 if. 'Linux'-:UNAME do.
+  qt_ldd_test d1
   smoutput 'If libjqt cannot be loaded, see this guide for installing the Qt library'
   smoutput 'https://code.jsoftware.com/wiki/Guides/Linux_Installation'
   return.
